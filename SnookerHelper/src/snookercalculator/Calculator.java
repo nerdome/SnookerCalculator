@@ -1,11 +1,10 @@
 /**
- * 
+ *
  */
 package snookercalculator;
 
 /**
- * @author Administrator
- * 
+ * @author fightcookie
  */
 
 // defines values of the balls
@@ -15,25 +14,25 @@ package snookercalculator;
 // - current maximum remaining points
 class Calculator {
 	// constant values of the balls
-	final static int	RED		= 1;
-	final static int	YELLOW	= 2;
-	final static int	BROWN	= 3;
-	final static int	GREEN	= 4;
-	final static int	BLUE	= 5;
-	final static int	PINK	= 6;
-	final static int	BLACK	= 7;
+	final static int RED = 1;
+	final static int YELLOW = 2;
+	final static int BROWN = 3;
+	final static int GREEN = 4;
+	final static int BLUE = 5;
+	final static int PINK = 6;
+	final static int BLACK = 7;
 
-	private int	scorePlayer1;
-	private int	scorePlayer2;
+	private int scorePlayer1;
+	private int scorePlayer2;
 
 	// declaration of fields for number / existence of balls on the table
-	private int			redBalls;
-	private boolean	yellowBall;
-	private boolean	brownBall;
-	private boolean	greenBall;
-	private boolean	blueBall;
-	private boolean	pinkBall;
-	private boolean		blackBall;
+	private int redBalls;
+	private boolean yellowBall;
+	private boolean brownBall;
+	private boolean greenBall;
+	private boolean blueBall;
+	private boolean pinkBall;
+	private boolean blackBall;
 
 	// resets scores and balls on the table
 	void newFrame() {
@@ -121,6 +120,14 @@ class Calculator {
 			remainingPoints = remainingPoints + 7;
 		}
 		return remainingPoints;
+	}
+
+	public int getScorePlayer1() {
+		return scorePlayer1;
+	}
+
+	public int getScorePlayer2() {
+		return scorePlayer2;
 	}
 
 
