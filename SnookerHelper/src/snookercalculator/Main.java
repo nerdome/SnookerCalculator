@@ -3,7 +3,6 @@
  */
 package snookercalculator;
 
-import java.io.IOException;
 
 /**
  * @author fightcookie
@@ -12,32 +11,27 @@ public class Main {
 
 	/**
 	 * @param args not used
-	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException {
-		String newGame = IOHandler.readLine("Start a new game? (y / n):");
-//		System.out.println(newGame);
-		if (newGame.equals("y")) {
-//	y	if (true) {
+	public static void main(String[] args) {
+		while (IOHandler.readLine("Start a new game? (y / n):").equals("y")) {
 			Calculator Table1 = new Calculator();
 			Table1.newFrame();
-			while (Table1.calcRemainingPoints() > 0) {
-				String player = IOHandler.readLine("Enter player 1 or player 2: ");
-				int ballValue = Integer.parseInt(IOHandler.readLine("Enter ball value: "));
-				Table1.calcPottedBall(player, ballValue);
-				String remainingPoints = "Remaining Points: " + Table1.calcRemainingPoints();
-				IOHandler.println(remainingPoints);
-				String scorePlayer1 = "Score of Player 1: " + Table1.getScorePlayer1();
-				IOHandler.println(scorePlayer1);
-				String scorePlayer2 = "Score of Player 2: " + Table1.getScorePlayer2();
-				IOHandler.println(scorePlayer2);
+
+			// print scores and remaining points after each potted ball
+			while (Table1.remainingPoints() > 0) {
+				String currentPlayer = IOHandler.readLine("Enter current player (1 / 2): ");
+				int pottedBallValue = Integer.parseInt(IOHandler.readLine("Enter value of potted ball: "));
+				Table1.calcPottedBall(currentPlayer, pottedBallValue);
+				IOHandler.println("Score of Player 1: " + Table1.getScorePlayer1());
+				IOHandler.println("Score of Player 2: " + Table1.getScorePlayer2());
+				IOHandler.println("Remaining Points: " + Table1.remainingPoints());
 			}
 			if (Table1.getScorePlayer1() > Table1.getScorePlayer2()) {
 				IOHandler.println("Player 1 wins! :)");
 			} else if (Table1.getScorePlayer2() > Table1.getScorePlayer1()) {
 				IOHandler.println("Player 2 wins! :)");
 			} else {
-				IOHandler.println("Tie! Respotted Black!");
+				IOHandler.println("Tie! :O Respotted Black!");
 			}
 		}
 	}

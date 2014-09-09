@@ -16,8 +16,8 @@ class Calculator {
 	// constant values of the balls
 	final static int RED = 1;
 	final static int YELLOW = 2;
-	final static int BROWN = 3;
-	final static int GREEN = 4;
+	final static int GREEN = 3;
+	final static int BROWN = 4;
 	final static int BLUE = 5;
 	final static int PINK = 6;
 	final static int BLACK = 7;
@@ -28,38 +28,44 @@ class Calculator {
 	// declaration of fields for number / existence of balls on the table
 	private int redBalls;
 	private boolean yellowBall;
-	private boolean brownBall;
 	private boolean greenBall;
+	private boolean brownBall;
 	private boolean blueBall;
 	private boolean pinkBall;
 	private boolean blackBall;
 
-	// resets scores and balls on the table
+	/**
+	 * resets scores and balls on the table
+	 */
 	void newFrame() {
 		scorePlayer1 = 0;
 		scorePlayer2 = 0;
 		redBalls = 15;
 		yellowBall = true;
-		brownBall = true;
 		greenBall = true;
+		brownBall = true;
 		blueBall = true;
 		pinkBall = true;
 		blackBall = true;
 	}
 
-	private void increaseScore(String player, int increment) {
-		if (player.equals("player1")) {
-			scorePlayer1 = scorePlayer1 + increment;
+	private void increaseScore(String player, int scoredPoints) {
+		if (player.equals("1")) {
+			scorePlayer1 += scoredPoints;
 		}
-		if (player.equals("player2")) {
-			scorePlayer2 = scorePlayer2 + increment;
+		if (player.equals("2")) {
+			scorePlayer2 += scoredPoints;
 		}
 	}
 
-	// depending on potted ball: increases score of respective player and
-	// changes number/ existence of balls on the table (if necessary)
+	/**
+	 * depending on potted ball: increases score of respective player and changes number/ existence of balls on the table (if necessary)
+	 *
+	 * @param player who potted the ball, 1 or 2
+	 * @param ballValue value of the ball from 1 to 7, standing for red, yellow, green, brown, blue, pink and black
+	 */
 	void calcPottedBall(String player, int ballValue) {
-		// check if ball value is valid
+		// validate ball value
 		if (ballValue > 0 && ballValue < 8) {
 			increaseScore(player, ballValue);
 			// change number / existence of balls on the table
@@ -70,10 +76,10 @@ class Calculator {
 						yellowBall = false;
 						break;
 					case 3:
-						brownBall = false;
+						greenBall = false;
 						break;
 					case 4:
-						greenBall = false;
+						brownBall = false;
 						break;
 					case 5:
 						blueBall = false;
@@ -93,9 +99,10 @@ class Calculator {
 		}
 	}
 
-	// calculates maximal remaining points on the table (ergo potting all reds
-	// with blacks and all colors after that)
-	int calcRemainingPoints() {
+	/**
+	 * @return maximum remaining points on the table (ergo potting all reds with blacks and all colors after that)
+	 */
+	int remainingPoints() {
 		// add remaining reds (value=1, maxNumber=15) all potted with black
 		// (value=7)
 		int remainingPoints = redBalls * 8;
@@ -104,10 +111,10 @@ class Calculator {
 		if (yellowBall) {
 			remainingPoints = remainingPoints + 2;
 		}
-		if (brownBall) {
+		if (greenBall) {
 			remainingPoints = remainingPoints + 3;
 		}
-		if (greenBall) {
+		if (brownBall) {
 			remainingPoints = remainingPoints + 4;
 		}
 		if (blueBall) {

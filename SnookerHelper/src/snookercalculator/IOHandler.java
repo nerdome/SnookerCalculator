@@ -12,7 +12,12 @@ import java.io.*;
 // is used instead of Console.*; for reading from and writing to console.
 // TODO directly write int variables with BufferedWriter?
 class IOHandler {
-	// prints output String and returns console user input as single String.
+	/**
+	 * prints string to console and returns user input from console as single string
+	 *
+	 * @param output string to be printed to console
+	 * @return user input from console as single string
+	 */
 	static String readLine(String output) {
 		// printing output with buffered System.out
 		try {
@@ -38,7 +43,11 @@ class IOHandler {
 		return result;
 	}
 
-	// prints output String with buffered System.out
+	/**
+	 * prints string to console with buffered System.out
+	 *
+	 * @param output string to be printed to console
+	 */
 	static void print(String output) {
 		try {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out, "UTF-8"));
@@ -51,13 +60,21 @@ class IOHandler {
 		}
 	}
 
-	// prints output Integer with buffered System.out
+	/**
+	 * prints integer to Console with buffered System.out
+	 *
+	 * @param output integer to be printed to console
+	 */
 	static void print(int output) {
 		String stringOutput = String.valueOf(output);
 		print(stringOutput);
 	}
 
-	// prints output String and line separator with buffered System.out
+	/**
+	 * prints output String and line separator to console with buffered System.out
+	 *
+	 * @param output string to be printed to console
+	 */
 	static void println(String output) {
 		try {
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out, "UTF-8"));
@@ -71,7 +88,11 @@ class IOHandler {
 		}
 	}
 
-	// prints output Integer and line separator with buffered System.out
+	/**
+	 * prints integer and line separator to console with buffered System.out
+	 *
+	 * @param output integer to be printed to console
+	 */
 	static void println(int output) {
 		String stringOutput = String.valueOf(output);
 		println(stringOutput);
