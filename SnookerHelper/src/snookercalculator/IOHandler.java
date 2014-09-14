@@ -20,15 +20,7 @@ class IOHandler {
 	 */
 	static String readLine(String output) {
 		// printing output with buffered System.out
-		try {
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out, "UTF-8"));
-			writer.write(output);
-			writer.flush();
-		} catch (IOException e) {
-			System.err.println("Error on writing to console! See error log for details.");
-			System.err.println("Exception! Cause: " + e.getCause() + " Message: " + e.getMessage());
-			e.printStackTrace();
-		}
+		print(output);
 
 		// getting input with buffered System.in and returning it
 		String result = null;
